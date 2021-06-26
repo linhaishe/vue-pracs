@@ -49,4 +49,9 @@ body {
 .el-menu {
   height: 100%;
 }
+.el-icon-arrow-down {
+  &::before {
+    display: none;
+  }
+}
 </style>
