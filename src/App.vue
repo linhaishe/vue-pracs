@@ -1,32 +1,52 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <el-container style="height: 100%; border: 1px solid #eee">
+      <app-navbar></app-navbar>
+      <router-link to="/"></router-link>
+      <router-link to="/message"></router-link>
+      <router-link to="/patient"></router-link>
+      <router-view />
+    </el-container>
   </div>
 </template>
+<script>
+import AppNavbar from "./components/AsideNavbar/Navbar.vue";
+
+export default {
+  components: {
+    AppNavbar,
+  },
+  data() {
+    const item = {
+      date: "2016-05-02",
+      name: "王小虎",
+      address: "上海市普陀区金沙江路 1518 弄",
+    };
+    return {
+      tableData: Array(20).fill(item),
+    };
+  },
+};
+</script>
 
 <style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("//unpkg.com/element-ui@2.15.2/lib/theme-chalk/index.css");
+html,
+body {
+  margin: 0 auto;
 }
 
-#nav {
-  padding: 30px;
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.el-aside {
+  color: #333;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.el-menu {
+  height: 100%;
 }
 </style>
