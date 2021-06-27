@@ -9,6 +9,12 @@
       <img class="menu" src="../../../src/assets/menu.png" alt="" />
     </div>
     <el-menu :default-openeds="['1', '3']">
+      <el-submenu index="3">
+        <template slot="title"
+          ><i class="el-icon-odometer"></i
+          ><router-link to="/overview">Overview</router-link></template
+        >
+      </el-submenu>
       <el-submenu index="1">
         <template slot="title"
           ><i class="el-icon-user"></i>
@@ -27,21 +33,16 @@
           ><router-link to="/test">Payment Information</router-link></template
         >
       </el-submenu>
+
       <el-submenu index="3">
         <template slot="title"
-          ><i class="el-icon-money"></i
-          ><router-link to="/test">Overview</router-link></template
-        >
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title"
-          ><i class="el-icon-money"></i
+          ><i class="el-icon-guide"></i
           ><router-link to="/test">Setting</router-link></template
         >
       </el-submenu>
       <el-submenu index="3">
         <template slot="title"
-          ><i class="el-icon-money"></i
+          ><i class="el-icon-date"></i
           ><router-link to="/test">Calendar</router-link></template
         >
       </el-submenu>
@@ -131,5 +132,9 @@
 .el-avatar {
   width: 65px;
   height: 65px;
+}
+
+.el-menu .el-icon-arrow-down:before {
+  display: none;
 }
 </style>

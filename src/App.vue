@@ -5,6 +5,7 @@
       <router-link to="/"></router-link>
       <router-link to="/message"></router-link>
       <router-link to="/patient"></router-link>
+      <router-link to="/overview"></router-link>
       <router-view />
     </el-container>
   </div>
