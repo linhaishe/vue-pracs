@@ -48,6 +48,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  /* background-color: #ecf3f9; */
 }
 img {
   height: 30px;

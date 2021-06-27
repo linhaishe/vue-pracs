@@ -20,3 +20,5 @@ export default {
   }, // 有s
 };
 </script>
+
+<style scoped></style>

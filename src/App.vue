@@ -49,11 +49,11 @@ body {
 .el-menu {
   height: 100%;
 }
-.el-icon-arrow-down {
-  &::before {
-    display: none;
-  }
-}
+// .el-icon-arrow-down {
+//   &::before {
+//     display: none;
+//   }
+// }
 
 #app a {
   font-weight: bold;
