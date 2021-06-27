@@ -1,23 +1,150 @@
 <template>
-  <el-main>
-    <el-table :data="tableData">
-      <el-table-column prop="date" label="日期" width="140"> </el-table-column>
-      <el-table-column prop="name" label="姓名" width="120"> </el-table-column>
-      <el-table-column prop="address" label="地址"> </el-table-column>
-    </el-table>
-  </el-main>
+  <el-table
+    ref="multipleTable"
+    :data="tableData"
+    tooltip-effect="dark"
+    style="width: 100%"
+    @selection-change="handleSelectionChange"
+  >
+    <el-table-column type="selection"> </el-table-column>
+    <el-table-column label="" width="60px"
+      ><el-avatar
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      ></el-avatar
+    ></el-table-column>
+    <el-table-column label="Basic Info">
+      <template slot-scope="scope"
+        >{{ scope.row.basicInfo }}<br /><span>{{
+          scope.row.email
+        }}</span></template
+      >
+    </el-table-column>
+    <el-table-column prop="phoneNumber" label="Phone Number"> </el-table-column>
+    <el-table-column prop="city" label="City" show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      prop="nextAppoinment"
+      label="Next Appoinment"
+      show-overflow-tooltip
+    >
+    </el-table-column>
+    <el-table-column
+      prop="lastAppoinment"
+      label="Last Appoinment"
+      show-overflow-tooltip
+    >
+    </el-table-column>
+    <el-table-column
+      prop="registerDate"
+      label="Register Date"
+      show-overflow-tooltip
+    >
+    </el-table-column>
+    <el-table-column show-overflow-tooltip>
+      <el-dropdown @command="handleCommand">
+        <span class="el-dropdown-link">
+          <i class="el-icon-more"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="a">黄金糕</el-dropdown-item>
+          <el-dropdown-item command="b">狮子头</el-dropdown-item>
+          <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
+          <el-dropdown-item command="d" disabled>双皮奶</el-dropdown-item>
+          <el-dropdown-item command="e" divided>蚵仔煎</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </el-table-column>
+  </el-table>
 </template>
 <script>
 export default {
   data() {
-    const item = {
-      date: "2016-05-02",
-      name: "王小虎",
-      address: "上海市普陀区金沙江路 1518 弄",
-    };
     return {
-      tableData: Array(20).fill(item),
+      tableData: [
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+        {
+          basicInfo: "Daine Cooper",
+          phoneNumber: 43535345,
+          email: "xusumu@gmil.com",
+          city: "Cilacap",
+          nextAppoinment: "Jan 21,2018 - 13:30",
+          lastAppoinment: "Jan 21,2018 - 13.30",
+          registerDate: "Jan 21, 2018",
+        },
+      ],
+      multipleSelection: [],
     };
+  },
+
+  methods: {
+    handleCommand(command) {
+      this.$message("click on item " + command);
+    },
+    toggleSelection(rows) {
+      if (rows) {
+        rows.forEach((row) => {
+          this.$refs.multipleTable.toggleRowSelection(row);
+        });
+      } else {
+        this.$refs.multipleTable.clearSelection();
+      }
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
   },
 };
 </script>

@@ -46,17 +46,40 @@
         >
       </el-submenu>
     </el-menu>
-    <router-view />
+    <div class="nav-bottom">
+      <div class="help">
+        <i class="el-icon-warning-outline"></i>
+        <span><strong>Help ?</strong></span>
+      </div>
+      <div class="doctorsCard">
+        <el-avatar
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        ></el-avatar>
+        <div>
+          <h5>Drg.Adam H.</h5>
+          <p><strong>Dentist</strong></p>
+        </div>
+        <i class="el-icon-more"></i>
+      </div>
+    </div>
   </el-aside>
 </template>
 
 <style scoped>
-.logo {
+.logo,
+.doctorsCard {
   display: flex;
   align-items: center;
   padding-top: 10px;
   padding-bottom: 20px;
   border-right: 1px solid #e6e6e6;
+}
+.doctorsCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #e6e6e6;
 }
 
 .logo img {
@@ -71,12 +94,42 @@
   margin: 0;
 }
 
-.logo p {
+.logo p,
+.doctorsCard p {
   color: lightgray;
   font-size: 12px;
 }
+
+.doctorsCard p {
+  margin-top: 10px;
+}
+
+.doctorsCard i {
+  color: lightgray;
+}
+
 .logo .menu {
   width: 20px;
   height: 20px;
+}
+
+.el-menu {
+  height: 75%;
+}
+
+.help {
+  color: darkgray;
+  padding: 15px;
+  border-right: 1px solid #e6e6e6;
+}
+
+.help span {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.el-avatar {
+  width: 65px;
+  height: 65px;
 }
 </style>
