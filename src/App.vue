@@ -34,6 +34,7 @@ export default {
 html,
 body {
   margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .el-header {
@@ -53,5 +54,11 @@ body {
   &::before {
     display: none;
   }
+}
+
+#app a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
 }
 </style>
