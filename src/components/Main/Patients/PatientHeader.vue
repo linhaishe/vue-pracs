@@ -30,9 +30,6 @@
 </template>
 
 <script>
-// import PatientTools from "../Main/patientList/PatientTools.vue";
-// import PatientLists from "../Main/patientList/PatientLists.vue";
-
 export default {
   data() {
     return {

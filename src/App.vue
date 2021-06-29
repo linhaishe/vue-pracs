@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <el-container style="height: 100%; border: 1px solid #eee">
+    <!-- <el-container style="height: 100%; border: 1px solid #eee">
       <app-navbar></app-navbar>
       <router-link to="/"></router-link>
       <router-link to="/message"></router-link>
       <router-link to="/patient"></router-link>
       <router-link to="/overview"></router-link>
       <router-view />
-    </el-container>
+    </el-container> -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import AppNavbar from "./components/AsideNavbar/Navbar.vue";
+// import AppNavbar from "./components/AsideNavbar/Navbar.vue";
 
 export default {
   components: {
-    AppNavbar,
+    //AppNavbar,
   },
   data() {
     const item = {
