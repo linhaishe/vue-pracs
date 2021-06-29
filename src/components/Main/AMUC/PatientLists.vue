@@ -31,18 +31,13 @@
     <el-table-column prop="content" label="Register Date" show-overflow-tooltip>
     </el-table-column>
     <el-table-column show-overflow-tooltip>
-      <el-dropdown @command="handleCommand">
-        <span class="el-dropdown-link">
-          <i class="el-icon-more"></i>
-        </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="a">黄金糕</el-dropdown-item>
-          <el-dropdown-item command="b">狮子头</el-dropdown-item>
-          <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
-          <el-dropdown-item command="d" disabled>双皮奶</el-dropdown-item>
-          <el-dropdown-item command="e" divided>蚵仔煎</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+      <template slot-scope="scope">
+        <i
+          class="el-icon-document-delete listDelete"
+          @click="listDelete(scope.$index, tableData)"
+        ></i>
+        <i class="el-icon-edit listUpdate" @click="listUpdate"></i>
+      </template>
     </el-table-column>
   </el-table>
 </template>
@@ -51,15 +46,15 @@ export default {
   data() {
     return {
       tableData: [
-        {
-          basicInfo: "Daine Cooper",
-          phoneNumber: 43535345,
-          email: "xusumu@gmil.com",
-          city: "Cilacap",
-          nextAppoinment: "Jan 21,2018 - 13:30",
-          lastAppoinment: "Jan 21,2018 - 13.30",
-          registerDate: "Jan 21, 2018",
-        },
+        // {
+        //   basicInfo: "Daine Cooper",
+        //   phoneNumber: 43535345,
+        //   email: "xusumu@gmil.com",
+        //   city: "Cilacap",
+        //   nextAppoinment: "Jan 21,2018 - 13:30",
+        //   lastAppoinment: "Jan 21,2018 - 13.30",
+        //   registerDate: "Jan 21, 2018",
+        // },
       ],
       multipleSelection: [],
     };
@@ -87,6 +82,56 @@ export default {
         this.tableData = res.data.data;
       });
     },
+    listDelete(index, data) {
+      console.log(index, data);
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$axios({
+            url: "/news/delNews",
+            method: "post",
+            data: { id: data[index].id },
+          }).then((res) => {
+            if (res.data.error) {
+              this.$message.error("删除失败");
+            } else {
+              this.$message({
+                type: "success",
+                message: "删除成功!",
+              });
+              this.getList();
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    listUpdate() {
+      this.$confirm("更新未完成", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
   },
   mounted() {
     this.getList();
@@ -94,4 +139,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.listDelete {
+  margin-right: 20px;
+}
+.listDelete,
+.listUpdate {
+  cursor: pointer;
+}
+</style>

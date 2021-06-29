@@ -21,7 +21,7 @@
     </div>
     <div class="tools-right">
       <el-button size="small" :plain="true" @click="open1">
-        <i class="el-icon-printer"></i></el-button
+        <i class="el-icon-folder-add"></i></el-button
       ><el-button size="small" :plain="true" @click="open2"
         ><i class="el-icon-sort"></i>Fillter</el-button
       ><el-button size="small" :plain="true" @click="open3"
