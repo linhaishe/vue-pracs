@@ -1,13 +1,5 @@
 <template>
   <div id="app">
-    <!-- <el-container style="height: 100%; border: 1px solid #eee">
-      <app-navbar></app-navbar>
-      <router-link to="/"></router-link>
-      <router-link to="/message"></router-link>
-      <router-link to="/patient"></router-link>
-      <router-link to="/overview"></router-link>
-      <router-view />
-    </el-container> -->
     <router-view></router-view>
   </div>
 </template>

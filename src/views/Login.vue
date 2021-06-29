@@ -24,6 +24,7 @@
             class="form-control username"
             id="floatingInput"
             placeholder="Username"
+            v-model="data.username"
           />
           <label for="floatingInput">Username</label>
         </div>
@@ -36,33 +37,14 @@
             class="form-control psw"
             id="floatingPassword"
             placeholder="Password"
+            v-model="data.password"
           />
           <label for="floatingPassword">Password</label>
         </div>
       </div>
-      <div class="radio-btn">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1"> 学生 </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault2"
-          />
-          <label class="form-check-label" for="flexRadioDefault2">
-            管理员
-          </label>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary login-btn">登入</button>
+      <button type="button" class="btn btn-primary login-btn" @click="login">
+        登入
+      </button>
     </div>
   </div>
 </template>
@@ -71,7 +53,41 @@
   integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
   crossorigin="anonymous"
 ></script>
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      data: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    login() {
+      this.$axios({
+        url: "/login/getuser",
+        params: this.data,
+      }).then((res) => {
+        console.log(res);
+        if (res.data.error) {
+          this.$message.error("登录失败！");
+          this.data = {
+            username: "",
+            password: "",
+          };
+        } else {
+          this.$message.success("登录成功");
+          console.log(this.data.username);
+          // this.$router.push({path:'/home/student',name:'Student',params:{user:this.data.username}});
+          this.$router.push("/home");
+          this.$store.commit("setUser", this.data.username);
+        }
+      });
+    },
+  },
+};
+</script>
 
 <style scoped>
 @import url("//unpkg.com/element-ui@2.15.2/lib/theme-chalk/index.css");

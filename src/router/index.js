@@ -1,8 +1,11 @@
 import Vue from "vue";
+import Vuex from "vuex";
+
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 
+Vue.use(Vuex);
 Vue.use(VueRouter);
 
 const routes = [
@@ -25,7 +28,7 @@ const routes = [
       {
         path: "/home/message",
         name: "Message",
-        component: () => import("../views/Message/MessageMain"),
+        component: () => import("../views/AMUC/MessageMain"),
       },
     ],
   },
