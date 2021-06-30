@@ -78,10 +78,21 @@ export default {
           };
         } else {
           this.$message.success("登录成功");
-          console.log(this.data.username);
+          //console.log("返回的数据", res.data[0].adminName);
+          // console.log("返回的数据", res.data[0].adminId);
           // this.$router.push({path:'/home/student',name:'Student',params:{user:this.data.username}});
+
+          let userInfo = {
+            userName: res.data.data[0].adminName,
+            userId: res.data.data[0].adminId,
+          };
+
+          // let userName = res.data.data[0].adminName;
+          // let userId = res.data.data[0].userId;
+
+          //console.log("userInfo", userInfo);
           this.$router.push("/home");
-          this.$store.commit("setUser", this.data.username);
+          this.$store.commit("setUser", userInfo);
         }
       });
     },

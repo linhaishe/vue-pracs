@@ -143,7 +143,6 @@ export default {
             },
           },
         },
-
         xAxis: {
           data: ["jan", "feb", "mar", "apr", "may", "jun"],
         },
@@ -167,6 +166,7 @@ export default {
   },
   mounted() {
     this.set();
+    console.log(11111, this.$store.state.username);
   },
 };
 </script>
