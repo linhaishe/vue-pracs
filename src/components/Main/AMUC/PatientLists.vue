@@ -188,6 +188,7 @@ export default {
       this.dialogFormVisible = true;
       this.form = { ...data[index] };
     },
+    //数据更新编辑修改
     updateComfirm() {
       this.$axios({
         url: "/news/updateNews",
